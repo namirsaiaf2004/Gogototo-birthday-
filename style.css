@@ -1,0 +1,128 @@
+body {
+  margin: 0;
+  height: 100vh;
+  background: radial-gradient(circle at top, #ff9a9e, #ff4d6d);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Comic Sans MS', cursive;
+  overflow: hidden;
+}
+
+/* HEART INTRO */
+.heart-container {
+  cursor: pointer;
+  animation: fadeIn 2s ease;
+}
+
+.heart {
+  width: 120px;
+  height: 120px;
+  background: red;
+  position: relative;
+  transform: rotate(-45deg);
+  animation: pulse 1s infinite;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  width: 120px;
+  height: 120px;
+  background: red;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.heart::before {
+  top: -60px;
+  left: 0;
+}
+
+.heart::after {
+  left: 60px;
+  top: 0;
+}
+
+/* CONTENT */
+.hidden {
+  display: none;
+}
+
+.content {
+  text-align: center;
+  color: white;
+  animation: zoomIn 1.5s ease forwards;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.6rem;
+  color: #ffe6ec;
+}
+
+.from {
+  margin-top: 20px;
+  font-size: 1.3rem;
+}
+
+/* BUTTON */
+.btn {
+  margin-top: 25px;
+  padding: 12px 25px;
+  border-radius: 25px;
+  border: none;
+  background: white;
+  color: #ff4d6d;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: scale(1.1);
+  background: #ffe6ea;
+}
+
+/* SURPRISE */
+.surprise {
+  margin-top: 20px;
+  font-size: 1.4rem;
+  opacity: 0;
+  transition: 1s;
+}
+
+.show {
+  opacity: 1;
+}
+
+/* FLOATING HEARTS */
+.floating {
+  position: absolute;
+  font-size: 22px;
+  animation: floatUp linear forwards;
+}
+
+@keyframes floatUp {
+  from { transform: translateY(0) scale(1); opacity: 1; }
+  to { transform: translateY(-100vh) scale(1.5); opacity: 0; }
+}
+
+/* ANIMATIONS */
+@keyframes pulse {
+  0%,100% { transform: rotate(-45deg) scale(1); }
+  50% { transform: rotate(-45deg) scale(1.15); }
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.5); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
