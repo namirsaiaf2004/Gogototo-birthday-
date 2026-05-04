@@ -1,9 +1,12 @@
+/* IMPORT PRETTY FONT */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:ital,wght@1,400;1,600&display=swap');
+
 body {
   margin: 0;
   height: 100vh;
-  background: linear-gradient(135deg, #ff9a9e, #ffc3a0);
-  font-family: 'Comic Sans MS', cursive;
-  overflow: hidden;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,108 +18,131 @@ body {
   cursor: pointer;
 }
 
+/* HEART BUTTON */
+.heart-btn {
+  font-size: 80px;
+  animation: floatHeart 2s ease-in-out infinite;
+  filter: drop-shadow(0 0 15px rgba(255, 105, 180, 0.6));
+}
+
 .tap {
   color: white;
-  margin-top: 15px;
+  margin-top: 10px;
+  font-size: 1rem;
+  letter-spacing: 1px;
 }
-
-/* HEART */
-.heart {
-  width: 120px;
-  height: 120px;
-  background: #ff4d6d;
-  transform: rotate(-45deg);
-  animation: pulse 1s infinite;
-  position: relative;
-}
-
-.heart::before,
-.heart::after {
-  content: "";
-  width: 120px;
-  height: 120px;
-  background: #ff4d6d;
-  border-radius: 50%;
-  position: absolute;
-}
-
-.heart::before { top: -60px; }
-.heart::after { left: 60px; }
 
 /* MAIN */
-.hidden { display: none; }
+.hidden {
+  display: none;
+}
 
 .main {
   text-align: center;
   color: white;
-  animation: fade 2s;
+  padding: 20px;
+  max-width: 400px;
+  animation: fadeIn 1.5s ease;
 }
 
-h1 { font-size: 2rem; }
-h2 { font-size: 1.5rem; color: #ffe6ec; }
+/* TEXT */
+h1 {
+  font-size: 1.9rem;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  font-family: 'Playfair Display', serif;
+}
 
+h2 {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-top: 10px;
+  color: #fff0f5;
+  letter-spacing: 1.2px;
+  font-family: 'Playfair Display', serif;
+}
+
+/* BUTTON */
 .btn {
-  margin-top: 20px;
-  padding: 12px 25px;
-  border-radius: 25px;
+  margin-top: 25px;
+  padding: 12px 30px;
+  border-radius: 30px;
   border: none;
   background: white;
   color: #ff4d6d;
+  font-size: 1rem;
   cursor: pointer;
   transition: 0.3s;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
 }
 
 .btn:hover {
-  transform: scale(1.1);
+  transform: scale(1.08);
+  background: #ffe6ec;
 }
 
 /* STORY */
 .story-text {
-  margin-top: 20px;
-  font-size: 1.3rem;
+  margin-top: 25px;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  font-weight: 300;
+  font-family: 'Playfair Display', serif;
 }
 
+/* PHOTO */
 .photo {
   width: 260px;
   border-radius: 20px;
-  margin: 15px 0;
+  margin: 20px 0;
   opacity: 0;
-  transform: scale(0.8);
-  animation: showPhoto 2s forwards;
+  transform: scale(0.9);
+  animation: photoFade 1.5s forwards;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
+/* FINAL TEXT */
 .final {
-  font-size: 1.2rem;
-  line-height: 1.6;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  letter-spacing: 0.8px;
+  font-weight: 300;
   opacity: 0;
-  animation: fade 3s forwards;
+  animation: fadeIn 2.5s forwards;
 }
 
 /* SIGN */
 .sign {
-  margin-top: 20px;
+  margin-top: 25px;
+  font-size: 1rem;
+  opacity: 0.9;
 }
 
-/* FLOATING */
+/* FLOATING HEARTS */
 .float {
   position: absolute;
-  animation: up linear forwards;
+  animation: floatUp linear forwards;
 }
 
 /* ANIMATIONS */
-@keyframes pulse {
-  50% { transform: rotate(-45deg) scale(1.1); }
+@keyframes floatHeart {
+  0%,100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-10px) scale(1.1); }
 }
 
-@keyframes fade {
-  from { opacity: 0; }
-  to { opacity: 1; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes showPhoto {
-  to { opacity: 1; transform: scale(1); }
+@keyframes photoFade {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
-@keyframes up {
+@keyframes floatUp {
+  from { transform: translateY(0); opacity: 1; }
   to { transform: translateY(-100vh); opacity: 0; }
 }
