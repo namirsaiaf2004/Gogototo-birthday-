@@ -7,14 +7,35 @@
 </head>
 <body>
 
-<div class="heart-container" onclick="openHeart()">
+<div class="intro" onclick="start()">
   <div class="heart"></div>
+  <p class="tap">tap the heart 💕</p>
 </div>
 
-<div class="content hidden">
-  <h1 id="text1"></h1>
-  <h2 id="text2"></h2>
-  <p class="from">— Namir 💌</p>
+<div class="main hidden">
+  <h1 id="line1"></h1>
+  <h2 id="line2"></h2>
+
+  <button onclick="next()" class="btn">open it 💝</button>
+
+  <div id="story" class="hidden">
+    <p class="story-text">
+      this marks the 3rd birthday celebration of us my bbg 💕
+    </p>
+
+    <img src="photo.jpg" class="photo">
+
+    <p class="final">
+      happy birthday my love 💖<br><br>
+      i love you more than words can ever explain…<br>
+      i hope i get to keep watching you grow up by my side forever 🥺<br><br>
+      another year of this pretty girl,<br>
+      another year of being prettier, smarter,<br>
+      cuter, and the most beautiful girl ever 💕
+    </p>
+  </div>
+
+  <p class="sign">— Namir 💌</p>
 </div>
 
 <script src="script.js"></script>
