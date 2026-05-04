@@ -1,27 +1,33 @@
 body {
   margin: 0;
   height: 100vh;
-  background: radial-gradient(circle at top, #ff9a9e, #ff4d6d);
+  background: linear-gradient(135deg, #ff9a9e, #ffc3a0);
+  font-family: 'Comic Sans MS', cursive;
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Comic Sans MS', cursive;
-  overflow: hidden;
 }
 
-/* HEART INTRO */
-.heart-container {
+/* INTRO */
+.intro {
+  text-align: center;
   cursor: pointer;
-  animation: fadeIn 2s ease;
 }
 
+.tap {
+  color: white;
+  margin-top: 15px;
+}
+
+/* HEART */
 .heart {
   width: 120px;
   height: 120px;
-  background: red;
-  position: relative;
+  background: #ff4d6d;
   transform: rotate(-45deg);
   animation: pulse 1s infinite;
+  position: relative;
 }
 
 .heart::before,
@@ -29,100 +35,88 @@ body {
   content: "";
   width: 120px;
   height: 120px;
-  background: red;
+  background: #ff4d6d;
   border-radius: 50%;
   position: absolute;
 }
 
-.heart::before {
-  top: -60px;
-  left: 0;
-}
+.heart::before { top: -60px; }
+.heart::after { left: 60px; }
 
-.heart::after {
-  left: 60px;
-  top: 0;
-}
+/* MAIN */
+.hidden { display: none; }
 
-/* CONTENT */
-.hidden {
-  display: none;
-}
-
-.content {
+.main {
   text-align: center;
   color: white;
-  animation: zoomIn 1.5s ease forwards;
+  animation: fade 2s;
 }
 
-h1 {
-  font-size: 2rem;
-}
+h1 { font-size: 2rem; }
+h2 { font-size: 1.5rem; color: #ffe6ec; }
 
-h2 {
-  font-size: 1.6rem;
-  color: #ffe6ec;
-}
-
-.from {
-  margin-top: 20px;
-  font-size: 1.3rem;
-}
-
-/* BUTTON */
 .btn {
-  margin-top: 25px;
+  margin-top: 20px;
   padding: 12px 25px;
   border-radius: 25px;
   border: none;
   background: white;
   color: #ff4d6d;
-  font-size: 16px;
   cursor: pointer;
   transition: 0.3s;
 }
 
 .btn:hover {
   transform: scale(1.1);
-  background: #ffe6ea;
 }
 
-/* SURPRISE */
-.surprise {
+/* STORY */
+.story-text {
   margin-top: 20px;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
+}
+
+.photo {
+  width: 260px;
+  border-radius: 20px;
+  margin: 15px 0;
   opacity: 0;
-  transition: 1s;
+  transform: scale(0.8);
+  animation: showPhoto 2s forwards;
 }
 
-.show {
-  opacity: 1;
+.final {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  opacity: 0;
+  animation: fade 3s forwards;
 }
 
-/* FLOATING HEARTS */
-.floating {
+/* SIGN */
+.sign {
+  margin-top: 20px;
+}
+
+/* FLOATING */
+.float {
   position: absolute;
-  font-size: 22px;
-  animation: floatUp linear forwards;
-}
-
-@keyframes floatUp {
-  from { transform: translateY(0) scale(1); opacity: 1; }
-  to { transform: translateY(-100vh) scale(1.5); opacity: 0; }
+  animation: up linear forwards;
 }
 
 /* ANIMATIONS */
 @keyframes pulse {
-  0%,100% { transform: rotate(-45deg) scale(1); }
-  50% { transform: rotate(-45deg) scale(1.15); }
+  50% { transform: rotate(-45deg) scale(1.1); }
 }
 
-@keyframes zoomIn {
-  from { transform: scale(0.5); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-@keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity: 1;}
+@keyframes showPhoto {
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes up {
+  to { transform: translateY(-100vh); opacity: 0; }
 }
