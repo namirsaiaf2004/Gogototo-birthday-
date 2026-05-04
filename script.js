@@ -1,88 +1,67 @@
-function openHeart() {
-  document.querySelector(".heart-container").style.display = "none";
-  document.querySelector(".content").classList.remove("hidden");
+function start() {
+  document.querySelector(".intro").style.display = "none";
+  document.querySelector(".main").classList.remove("hidden");
 
-  typeText("text1", "Guess whose birthday is today... 🎂", 40, () => {
-    typeText("text2", "It's my love Gogototo 💖", 40);
+  type("line1", "guess whose birthday is today… 🎂", 40, () => {
+    type("line2", "it’s my love gogototo 💖", 40);
   });
 
-  startHearts();
+  hearts();
 }
 
-/* TYPE EFFECT */
-function typeText(id, text, speed, callback) {
+/* typing */
+function type(id, text, speed, cb) {
   let i = 0;
   let el = document.getElementById(id);
 
-  function typing() {
+  function t() {
     if (i < text.length) {
-      el.innerHTML += text.charAt(i);
+      el.innerHTML += text[i];
       i++;
-      setTimeout(typing, speed);
-    } else if (callback) {
-      callback();
-    }
+      setTimeout(t, speed);
+    } else if (cb) cb();
   }
-
-  typing();
+  t();
 }
 
-/* FLOATING HEARTS (STRONG VERSION) */
-function startHearts() {
+/* next part */
+function next() {
+  document.getElementById("story").classList.remove("hidden");
+  loveRain();
+}
+
+/* hearts floating */
+function hearts() {
   setInterval(() => {
-    let heart = document.createElement("div");
-    heart.innerHTML = Math.random() > 0.5 ? "💖" : "💗";
-    heart.classList.add("floating");
+    let h = document.createElement("div");
+    h.innerHTML = Math.random() > 0.5 ? "💖" : "💗";
+    h.className = "float";
 
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.bottom = "-20px";
+    h.style.left = Math.random() * 100 + "vw";
+    h.style.bottom = "-20px";
+    h.style.fontSize = (16 + Math.random() * 20) + "px";
+    h.style.animationDuration = (3 + Math.random() * 3) + "s";
 
-    heart.style.fontSize = (16 + Math.random() * 20) + "px";
-    heart.style.animationDuration = (3 + Math.random() * 3) + "s";
-
-    document.body.appendChild(heart);
-
-    setTimeout(() => heart.remove(), 6000);
+    document.body.appendChild(h);
+    setTimeout(() => h.remove(), 6000);
   }, 150);
 }
 
-/* SURPRISE MESSAGE */
-function showSurprise() {
-  let el = document.getElementById("surprise");
-  el.classList.add("show");
+/* love words */
+function loveRain() {
+  const words = ["bbg 💕","my love 💖","amorty 💘","gogo 💞","baby 💗"];
 
-  burstHearts();
-}
+  setInterval(() => {
+    let w = document.createElement("div");
+    w.innerHTML = words[Math.floor(Math.random() * words.length)];
+    w.className = "float";
 
-/* HEART BURST EFFECT */
-function burstHearts() {
-  for (let i = 0; i < 25; i++) {
-    let heart = document.createElement("div");
-    heart.innerHTML = "💖";
-    heart.style.position = "absolute";
+    w.style.left = Math.random() * 100 + "vw";
+    w.style.bottom = "-20px";
+    w.style.fontSize = (14 + Math.random() * 10) + "px";
+    w.style.animationDuration = "5s";
 
-    let x = window.innerWidth / 2;
-    let y = window.innerHeight / 2;
-
-    heart.style.left = x + "px";
-    heart.style.top = y + "px";
-
-    let angle = Math.random() * 2 * Math.PI;
-    let distance = 100 + Math.random() * 200;
-
-    let xMove = Math.cos(angle) * distance;
-    let yMove = Math.sin(angle) * distance;
-
-    document.body.appendChild(heart);
-
-    heart.animate([
-      { transform: "translate(0,0)", opacity: 1 },
-      { transform: `translate(${xMove}px, ${yMove}px)`, opacity: 0 }
-    ], {
-      duration: 1000,
-      easing: "ease-out"
-    });
-
-    setTimeout(() => heart.remove(), 1000);
-  }
+    document.body.appendChild(w);
+    setTimeout(() => w.remove(), 6000);
+  }, 200);
 }
